@@ -9,7 +9,7 @@ import { Url } from '../models/url';
 })
 export class UrlshortenerService {
 
-  baseURL = environment.apiURL + 'url/';
+  baseURL = environment.apiURL;
 
   constructor(private http: HttpClient) { }
 
@@ -21,7 +21,6 @@ export class UrlshortenerService {
 
   public post(url: Url): Observable<Url> {
     return this.http
-      .post<Url>(this.baseURL, url)
-      .pipe(take(1));
+      .post<Url>(this.baseURL, url);
   }
 }

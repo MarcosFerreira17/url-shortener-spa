@@ -41,6 +41,7 @@
   <div class="mb-3 xl:w-96">
     <div class="input-group relative flex flex-auto items-stretch w-full mb-4">
       <input
+        [(ngModel)]="url.originalUrl"
         type="text"
         class="form-control relative flex-auto min-w-0 block w-full px-8 py-4 text-base font-normal text-gray-700 bg-gray-800 bg-clip-padding border border-solid border-gray-700 rounded transition ease-in-out m-0 focus:text-white focus:border-blue-600 focus:outline-none"
         placeholder="Insert here your link"
@@ -48,12 +49,18 @@
         aria-describedby="button-addon3"
       />
       <button
+        (click)="create()"
         class="btn inline-block px-6 py-2 text-white font-bold 'text-xs leading-tight rounded bg-blue-600 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
         type="submit"
         id="button-addon3"
       >
         Shorten
       </button>
+    </div>
+    <div class="flex justify-center" onchange="generateHash()">
+      <span class="inline-grid grid-cols-1 gap-2 mt-2 text-center">
+        <span class="text-3 font-thin text-blue-400 mb-0">{{ urlShort }}</span>
+      </span>
     </div>
     <div class="flex justify-center">
       <span class="inline-grid grid-cols-1 gap-2 mt-72 text-center">

@@ -1,5 +1,5 @@
-export interface Url {
-  id: number;
-  originalUrl: string;
-  hash: string;
+export class Url {
+  id= "";
+  originalUrl= "";
+  hash= "";
 }
