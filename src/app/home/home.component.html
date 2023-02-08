@@ -58,7 +58,12 @@
     </div>
     <div class="flex justify-center" onchange="generateHash()">
       <span class="inline-grid grid-cols-1 gap-2 mt-2 text-center">
-        <span class="text-3 font-thin text-blue-400 mb-0">{{ urlShort }}</span>
+        <span *ngIf="urlShort" class="text-3 font-thin text-blue-400 mb-0"
+          >Short URL: {{ urlShort }}</span
+        >
+        <span font-thin text-gray-400 *ngIf="errorUrl">
+          {{ errorUrl }}
+        </span>
       </span>
     </div>
     <div class="flex justify-center">
