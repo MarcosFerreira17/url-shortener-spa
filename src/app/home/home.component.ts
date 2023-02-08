@@ -1,6 +1,10 @@
 import { UrlshortenerService } from './../services/urlshortener.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Url } from '../models/url';
+import {
+  NgxQrcodeElementTypes,
+  NgxQrcodeErrorCorrectionLevels,
+} from '@techiediaries/ngx-qrcode';
 
 @Component({
   selector: 'app-Home',
@@ -11,6 +15,9 @@ export class HomeComponent implements OnInit {
   url = new Url();
   urlShort?: Url;
   errorUrl?: string;
+  elementType = NgxQrcodeElementTypes.URL;
+  correctionLevel = NgxQrcodeErrorCorrectionLevels.HIGH;
+  value?: string;
   constructor(private UrlshortenerService: UrlshortenerService) {}
 
   ngOnInit(): void {}
@@ -24,12 +31,13 @@ export class HomeComponent implements OnInit {
         console.log(data);
         this.errorUrl = '';
         this.GenerateHash(data);
+        this.value = data;
       },
       (error: any) => {
         console.error(error);
         this.errorUrl = this.errorUrl =
           error.error.message ||
-          'Ocorreu um erro desconhecido, verifique se seu url é válido, por exemplo: https://seudominio.com/ Onde example.com é o nome do domínio e https é o protocolo usado para acessar o recurso. Também é possível incluir caminhos adicionais após o nome do domínio, como por exemplo: https://www.example.com/path/to/resource Lembrando que a estrutura de um URL pode variar de acordo com o protocolo e o recurso que se deseja acessar.';
+          'An unknown error occurred, please check that your url is valid, for example: https://yourdomain.com/ Where example.com is the domain name and https is the protocol used to access the resource. It is also possible to include additional paths after the domain name, for example: https://www.example.com/path/to/resource Remembering that the structure of a URL can vary according to the protocol and the resource that is used. want access.';
       }
     );
   }

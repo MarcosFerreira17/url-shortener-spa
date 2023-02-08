@@ -59,8 +59,17 @@
     <div class="flex justify-center" onchange="generateHash()">
       <span class="inline-grid grid-cols-1 gap-2 mt-2 text-center">
         <span *ngIf="urlShort" class="text-3 font-thin text-blue-400 mb-0"
-          >Short URL: {{ urlShort }}</span
+          >Short URL:
+          <a href="{{ urlShort }}" target="_blank">{{ urlShort }}</a></span
         >
+        <ngx-qrcode
+          class="flex justify-center"
+          *ngIf="urlShort"
+          [elementType]="elementType"
+          [errorCorrectionLevel]="correctionLevel"
+          [value]="value || ''"
+          cssClass="bshadow"
+        ></ngx-qrcode>
         <span font-thin text-gray-400 *ngIf="errorUrl">
           {{ errorUrl }}
         </span>
