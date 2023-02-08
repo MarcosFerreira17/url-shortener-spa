@@ -1,5 +1,5 @@
 # Linky
-Access the [API project](https://github.com/MarcosFerreira17/url-shortener-api)
+Access the [API project](https://github.com/MarcosFerreira17/url-shortener-api), this api is not running, only the fronend page.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.4.
 
